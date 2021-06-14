@@ -12,11 +12,11 @@ namespace ToDo.Controllers
     [ApiController]
     public class TodoController : ControllerBase
     {
-        private static work task = new work(); 
-        [HttpGet("get")]
+        private static List<work> task = new List<work>(); 
+        [HttpGet("Read")]
         public ActionResult<work> Get()
         {
-            return BadRequest();
+            return Ok(task);
         }
 
     }
