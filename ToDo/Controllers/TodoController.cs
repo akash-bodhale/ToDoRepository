@@ -16,7 +16,7 @@ namespace ToDo.Controllers
         [HttpGet("Read")]
         public ActionResult<work> Get()
         {
-            return Ok(task);
+            return Ok(task[0]);
         }
 
     }
