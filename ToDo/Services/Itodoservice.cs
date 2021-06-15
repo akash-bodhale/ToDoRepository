@@ -9,9 +9,9 @@ namespace ToDo.Services
 {
    public  interface Itodoservice
     {
-        public Task<List<work>> Create( work Newtodo);
-        public Task<List<work>> Get();
-        public Task<work> GetById(int id);
-        public Task<work> Update(work updated);
+        public Task<ServiceResponse<List<work>>> Create( work Newtodo);
+        public Task<ServiceResponse<List<work>>> Get();
+        public Task<ServiceResponse<work>> GetById(int id);
+        public Task<ServiceResponse<work>> Update(work updated);
     }
 }

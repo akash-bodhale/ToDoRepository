@@ -14,44 +14,52 @@ namespace ToDo.Services
         {
             todo.Add(new work { Id = 1, Name = "nazar", complete = false });
         }
-        public async Task<List<work>> Create( work Newtodo)
+        public async Task<ServiceResponse<List<work>>> Create( work Newtodo)
         {
+            ServiceResponse<List<work>> s = new ServiceResponse<List<work>>();
             todo.Add(Newtodo);
-            return todo;
+            s.Data = todo;
+            return s;
         }
 
-        public async Task<List<work>> Get()
+        public async Task<ServiceResponse<List<work>>> Get()
         {
-            return todo;
+            ServiceResponse<List<work>> s = new ServiceResponse<List<work>>();
+            s.Data = todo;
+            return s;
         }
 
-        public async Task<work> GetById(int id)
+        public async Task<ServiceResponse<work>> GetById(int id)
         {
-            return todo.FirstOrDefault(t => t.Id == id);
+            ServiceResponse<work> s = new ServiceResponse<work>();
+            s.Data =  todo.FirstOrDefault(t => t.Id == id);
+            return s;
         }
 
-        public async Task<work> Update(work updated)
+        public async Task<ServiceResponse<work>> Update(work updated)
         {
-            try
-            {
-                work w = todo.FirstOrDefault(c => c.Id == updated.Id);
-                if (w.Id == updated.Id)
+            ServiceResponse<work> s = new ServiceResponse<work>();
+            try 
+            { 
+                    work w= todo.FirstOrDefault(c => c.Id == updated.Id);
+                if (w != null)
                 {
                     w.Name = updated.Name;
                     w.complete = updated.complete;
-                    return w;
+                    s.Data = w;
                 }
                 else 
                 {
-                    throw null;
+                    throw new Exception();
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                throw new NullReferenceException("Null exception");
+                s.status = false;
+                s.Message = ex.Message;
+
             }
-            
-            
+            return s;
         }
     }
 }
