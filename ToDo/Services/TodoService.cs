@@ -32,11 +32,26 @@ namespace ToDo.Services
 
         public async Task<work> Update(work updated)
         {
-            work w = todo.FirstOrDefault(c => c.Id == updated.Id);
-            w.Name = updated.Name;
-            w.complete = updated.complete;
-            return w;
-
+            try
+            {
+                work w = todo.FirstOrDefault(c => c.Id == updated.Id);
+                if (w.Id == updated.Id)
+                {
+                    w.Name = updated.Name;
+                    w.complete = updated.complete;
+                    return w;
+                }
+                else 
+                {
+                    throw null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new NullReferenceException("Null exception");
+            }
+            
+            
         }
     }
 }
