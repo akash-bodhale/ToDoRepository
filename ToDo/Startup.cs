@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ToDo.Services;
 
 namespace ToDo
 {
@@ -26,6 +27,7 @@ namespace ToDo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<Itodoservice,TodoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

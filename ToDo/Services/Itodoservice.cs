@@ -7,10 +7,11 @@ using ToDo.Models;
 
 namespace ToDo.Services
 {
-    interface Itodoservice
+   public  interface Itodoservice
     {
-        public List<work> Create([FromBody] work Newtodo);
-        public List<work> Get();
-        public work GetById(int id);
+        public Task<List<work>> Create( work Newtodo);
+        public Task<List<work>> Get();
+        public Task<work> GetById(int id);
+        public Task<work> Update(work updated);
     }
 }

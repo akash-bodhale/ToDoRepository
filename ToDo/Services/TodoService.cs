@@ -14,20 +14,29 @@ namespace ToDo.Services
         {
             todo.Add(new work { Id = 1, Name = "nazar", complete = false });
         }
-        public List<work> Create( work Newtodo)
+        public async Task<List<work>> Create( work Newtodo)
         {
             todo.Add(Newtodo);
             return todo;
         }
 
-        public List<work> Get()
+        public async Task<List<work>> Get()
         {
             return todo;
         }
 
-        public work GetById(int id)
+        public async Task<work> GetById(int id)
         {
             return todo.FirstOrDefault(t => t.Id == id);
+        }
+
+        public async Task<work> Update(work updated)
+        {
+            work w = todo.FirstOrDefault(c => c.Id == updated.Id);
+            w.Name = updated.Name;
+            w.complete = updated.complete;
+            return w;
+
         }
     }
 }
