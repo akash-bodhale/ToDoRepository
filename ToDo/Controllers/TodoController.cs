@@ -12,26 +12,23 @@ namespace ToDo.Controllers
     [ApiController]
     public class TodoController : ControllerBase
     {
-        private List<work> todo = new List<work>();
-        public TodoController()
-        {
-            todo.Add(new work {Id=1,Name="nazar",complete=false});
-        }
+        
+       
         [HttpPost("Create")]
         public ActionResult<List<work>> Create([FromBody] work Newtodo)
         {
-            todo.Add(Newtodo);
-            return Ok(todo);
+            
+            //return Ok(todo);
         }
         [HttpGet("Read")]
         public ActionResult<work> Get()
         {
-            return Ok(todo[0]);
+            //return Ok(todo[0]);
         }
         [HttpGet("Read/{id}")]
         public ActionResult<work> GetById(int id)
         {
-            return Ok(todo.FirstOrDefault(t=>t.Id==id));
+            //return Ok(todo.FirstOrDefault(t=>t.Id==id));
         }
 
     }
