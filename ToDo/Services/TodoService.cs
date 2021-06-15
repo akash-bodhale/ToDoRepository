@@ -61,5 +61,27 @@ namespace ToDo.Services
             }
             return s;
         }
+        public async Task<ServiceResponse<work>> Delete(int id)
+        {
+            ServiceResponse<work> s = new ServiceResponse<work>();
+            try 
+            {
+                work w = todo.Find(c => c.Id == id);
+                if (w != null)
+                {
+                    todo.Remove(w);
+                }
+                else 
+                {
+                    throw new Exception(); 
+                }
+            }
+            catch(Exception ex)
+            {
+                s.status = false;
+                s.Message = ex.Message;
+            }
+            return s;
+        }
     }
 }

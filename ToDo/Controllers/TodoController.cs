@@ -40,6 +40,11 @@ namespace ToDo.Controllers
         {
             return Ok(await _todoservice.Update(updated));
         }
+        [HttpDelete("Delete/{id}")]
+        public async Task<ActionResult<ServiceResponse<work>>> Delete(int id)
+        {
+            return Ok(await _todoservice.Delete(id));
+        }
 
     }
 }

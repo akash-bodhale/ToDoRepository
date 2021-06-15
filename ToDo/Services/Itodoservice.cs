@@ -13,5 +13,6 @@ namespace ToDo.Services
         public Task<ServiceResponse<List<work>>> Get();
         public Task<ServiceResponse<work>> GetById(int id);
         public Task<ServiceResponse<work>> Update(work updated);
+        public Task<ServiceResponse<work>> Delete(int id);
     }
 }
